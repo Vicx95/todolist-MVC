@@ -1,0 +1,45 @@
+﻿@model TODOListMVC.Models.TaskModel
+                             
+
+@if (Model.Status == TODOListMVC.Models.TaskStatus.Active)
+{
+    <div class="active" style="display: flex;
+                               width:50%
+                               flex: 1 0 50%;
+                               align-content: left;
+                               justify-content: flex-start;
+                               ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@Model.Title</h3>
+                <h5 class="text-danger">@Model.Status</h5>
+            </div>
+            <div class="panel-body">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = Model.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+            </div>
+        </div>
+    </div>
+}
+else
+{
+     <div class="complete" style="display: flex;
+                               flex: 1 0 50%;
+                               align-content: right;
+                               justify-content: flex-end;
+                               ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@Model.Title</h3>
+                <h5 class="text-success">@Model.Status</h5>
+            </div>
+            <div class="panel-body">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = Model.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+            </div>
+        </div>
+    </div>
+}
+

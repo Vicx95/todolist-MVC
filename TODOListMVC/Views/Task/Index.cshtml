@@ -1,0 +1,16 @@
+﻿@model IEnumerable<TODOListMVC.Models.TaskModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tasks list</h2>
+
+<p>
+    @Html.ActionLink("Add new task", "Create");
+</p>
+
+
+@foreach (var task in Model)
+{
+    @Html.Partial("_TasksSummary", task);
+}
