@@ -28,6 +28,11 @@ namespace TODOListMVC.Services
             taskModel.Id = tasks.Max(t => t.Id) + 1;
         }
 
+        public void Add(UserModel userModel)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(int id)
         {
             var task = Get(id);
@@ -47,6 +52,16 @@ namespace TODOListMVC.Services
             return tasks.OrderBy(t => t.Id);
         }
 
+        public UserModel GetUserByEmail(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserModel GetVerifyCode(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(TaskModel taskModel)
         {
             var existing = Get(taskModel.Id);
@@ -57,6 +72,11 @@ namespace TODOListMVC.Services
                 existing.Status = taskModel.Status;
             }
                
+        }
+
+        public void UpdateEmailVerifyStatus(UserModel userModel)
+        {
+            throw new NotImplementedException();
         }
     }
 }

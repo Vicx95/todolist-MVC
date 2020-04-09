@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using TODOListMVC.Models;
 using TODOListMVC.Services;
 
@@ -18,12 +14,14 @@ namespace TODOListMVC.Controllers
         }
 
         // GET: Task
+        [Authorize]
         public ActionResult Index()
         {
             var model = db.GetAll();
             return View(model);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -35,12 +33,14 @@ namespace TODOListMVC.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Create(TaskModel task)
@@ -53,6 +53,7 @@ namespace TODOListMVC.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -64,6 +65,7 @@ namespace TODOListMVC.Controllers
             return View(model);
         }
 
+        [Authorize]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Edit(TaskModel task)
@@ -76,6 +78,7 @@ namespace TODOListMVC.Controllers
             return View(task);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -87,6 +90,7 @@ namespace TODOListMVC.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection form)
         {

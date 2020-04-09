@@ -11,8 +11,13 @@ namespace TODOListMVC.Services
     {
         IEnumerable<TaskModel> GetAll();
         TaskModel Get(int id);
+        UserModel GetVerifyCode(string id);
+        UserModel GetUserByEmail(string email);
         void Add(TaskModel taskModel);
+        void Add(UserModel userModel);
         void Update(TaskModel taskModel);
+        void UpdateEmailVerifyStatus(UserModel userModel);
         void Delete(int id);
+
     }
 }

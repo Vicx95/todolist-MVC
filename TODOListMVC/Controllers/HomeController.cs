@@ -5,23 +5,24 @@ using System.Web;
 using System.Web.Mvc;
 using TODOListMVC.Services;
 
-namespace TODOListMVC.Controllers
+namespace TODOListMVC.Areas.user.Controllers
 {
     public class HomeController : Controller
     {
-        ITaskData db;
+        private readonly ITaskData db;
 
-
+        
         public HomeController(ITaskData db)
         {
             this.db = db;
         }
 
+        // GET: user/Home
+        [Authorize]
         public ActionResult Index()
         {
             var model = db.GetAll();
             return View(model);
         }
-
     }
 }

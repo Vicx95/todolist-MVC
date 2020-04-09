@@ -4,9 +4,19 @@
     ViewBag.Title = "TODO List";
 }
 
+@Html.ActionLink("Tasks", "Index", "Task", new { area = "" }, new { @class = "navbar-brand" })
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        <a class="navbar-brand" href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+    }
+}
 <div class="jumbotron">
     <h1 class="text-center">TODO List</h1>
-    <div>
+    <div class="text-center">
+        Welcome @HttpContext.Current.User.Identity.Name<br/>
         There are @Model.Count()  tasks in the database.<br />
         @Model.Where(t => t.Status == TODOListMVC.Models.TaskStatus.Active).Count() tasks is Active<br />
         @Model.Where(t => t.Status == TODOListMVC.Models.TaskStatus.Completed).Count() tasks is Completed
